@@ -5,33 +5,46 @@
    ========================================================================== */
 
 :root {
-  --bg:        #f7f4ef;
-  --bg-2:      #efeae1;
+  /* Taken from the practice's own logo: plum #a4518f and indigo #3c3f9e.
+     Indigo carries the structure, plum is reserved for the booking button so
+     it is never confused with anything else. Plum is deepened to #8f4480 so
+     white text on it clears 5:1. */
+  --bg:        #f7f5fa;
+  --bg-2:      #eeeaf4;
   --surface:   #ffffff;
-  --ink:       #11262a;
-  --ink-2:     #4a5c60;
-  --brand:     #0b4f5a;
-  --brand-d:   #073b43;
-  --brand-l:   #e2eff0;
-  --accent:    #bf4526;
-  --accent-d:  #a13919;
-  --accent-l:  #fdeee8;
-  --line:      #ddd6cb;
-  --line-2:    #c9c0b2;
+  --ink:       #1b1930;
+  --ink-2:     #56526e;
+  --brand:     #3c3f9e;
+  --brand-d:   #2f3280;
+  --brand-l:   #ecebf9;
+  --accent:    #8f4480;
+  --accent-d:  #7a3a6d;
+  --accent-l:  #f9eef6;
+  --line:      #ddd7e6;
+  --line-2:    #c4bcd4;
   --ok:        #1c7a3c;
 
   --r:   16px;
   --r-s: 12px;
   --r-l: 24px;
 
-  --shadow:   0 1px 2px rgba(17, 38, 42, .05), 0 6px 20px rgba(17, 38, 42, .06);
-  --shadow-l: 0 2px 6px rgba(17, 38, 42, .06), 0 18px 44px rgba(17, 38, 42, .13);
+  --shadow:   0 1px 2px rgba(27, 25, 48, .05), 0 6px 20px rgba(27, 25, 48, .06);
+  --shadow-l: 0 2px 6px rgba(27, 25, 48, .06), 0 18px 44px rgba(27, 25, 48, .13);
 
   --wrap: 1140px;
   --pad:  clamp(1.25rem, 5vw, 2.5rem);
   --sec:  clamp(3.5rem, 8vw, 6.5rem);
 
   --tap: 56px;
+
+  /* Onest has no Greek subset, so the Greek version swaps to Manrope — the
+     closest match that covers it. Macedonian and English are untouched; the
+     Manrope stylesheet is only fetched if somebody picks Greek. */
+  --sans: Onest, "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+html[lang="el"] {
+  --sans: Manrope, "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -46,7 +59,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: Onest, "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-family: var(--sans);
   font-size: 19px;
   line-height: 1.62;
   -webkit-font-smoothing: antialiased;
@@ -126,12 +139,12 @@ a:hover { color: var(--brand-d); }
 /* -------------------------------------------------------------- header */
 .head {
   position: sticky; top: 0; z-index: 60;
-  background: rgba(247, 244, 239, .93);
+  background: rgba(247, 245, 250, .93);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
   transition: border-color .2s ease, box-shadow .2s ease;
 }
-.head.is-stuck { border-bottom-color: var(--line); box-shadow: 0 2px 14px rgba(17,38,42,.05); }
+.head.is-stuck { border-bottom-color: var(--line); box-shadow: 0 2px 14px rgba(27,25,48,.05); }
 
 .head__in {
   width: 100%; max-width: var(--wrap); margin-inline: auto;
@@ -140,10 +153,8 @@ a:hover { color: var(--brand-d); }
 }
 
 .brand { display: inline-flex; align-items: center; gap: .7rem; text-decoration: none; color: var(--ink); }
-.brand__mark {
-  display: grid; place-items: center; width: 44px; height: 44px; flex: none;
-  background: var(--brand); color: #fff; border-radius: 13px;
-}
+.brand__mark { display: block; width: 44px; height: 44px; flex: none; }
+.brand__mark svg { display: block; width: 100%; height: 100%; }
 .brand__text { display: flex; flex-direction: column; line-height: 1.15; }
 .brand__text strong { font-size: 1.16rem; font-weight: 700; letter-spacing: -.02em; }
 .brand__text small { font-size: .76rem; color: var(--ink-2); letter-spacing: .02em; }
@@ -153,11 +164,11 @@ a:hover { color: var(--brand-d); }
 
 .lang { display: inline-flex; background: var(--bg-2); border-radius: 10px; padding: 3px; }
 .lang__b {
-  min-width: 44px; min-height: 38px; padding: 0 .55rem;
+  min-width: 40px; min-height: 38px; padding: 0 .45rem;
   border: 0; background: transparent; border-radius: 8px;
   font: inherit; font-size: .88rem; font-weight: 600; color: var(--ink-2); cursor: pointer;
 }
-.lang__b.is-on { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(17,38,42,.12); }
+.lang__b.is-on { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(27,25,48,.12); }
 
 /* ---------------------------------------------------------------- hero */
 .hero { padding: clamp(2.5rem, 7vw, 5rem) 0 clamp(2rem, 5vw, 3.5rem); }
@@ -223,32 +234,33 @@ a:hover { color: var(--brand-d); }
 .sec__h { font-size: clamp(1.9rem, 5.2vw, 2.9rem); font-weight: 700; margin: 0 0 .7rem; }
 .sec__lead { font-size: 1.1rem; color: var(--ink-2); margin: 0; }
 
-/* ------------------------------------------------------------ services */
-.svc { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: 1fr; }
-
-/* Icon above the text, not beside it: in a four-column grid a side-by-side
-   layout squeezes the title onto three lines. */
-.svc__c {
-  width: 100%; height: 100%; min-height: 100px; text-align: left; cursor: pointer;
-  display: flex; flex-direction: column; align-items: flex-start; gap: .5rem;
-  padding: 1.4rem; background: var(--surface);
-  border: 2px solid var(--line); border-radius: var(--r);
-  font: inherit; color: inherit;
-  transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+/* ------------------------------------------------------------ services
+   One bookable thing — a check-up — so it gets one wide block, not a grid. */
+.one {
+  display: grid; gap: 1.2rem 1.5rem; align-items: center;
+  grid-template-columns: 1fr;
+  background: var(--surface); border: 2px solid var(--line);
+  border-radius: var(--r); padding: clamp(1.4rem, 4vw, 2.2rem);
 }
-.svc__c:hover { border-color: var(--brand); box-shadow: var(--shadow); transform: translateY(-2px); }
-.svc__i {
-  display: grid; place-items: center; margin-bottom: .35rem;
-  width: 52px; height: 52px; border-radius: 14px; flex: none;
-  background: var(--brand-l); color: var(--brand);
+.one__i {
+  display: grid; place-items: center; width: 64px; height: 64px; flex: none;
+  border-radius: 17px; background: var(--brand-l); color: var(--brand);
 }
-.svc__i svg { width: 26px; height: 26px; }
-.svc__t { font-size: 1.14rem; font-weight: 600; letter-spacing: -.01em; }
-.svc__d { font-size: .97rem; color: var(--ink-2); line-height: 1.5; }
+.one__i svg { width: 32px; height: 32px; }
+.one__t { margin: 0 0 .3rem; font-size: 1.35rem; font-weight: 600; letter-spacing: -.015em; }
+.one__len {
+  margin: 0 0 .5rem; display: inline-block;
+  padding: .2rem .7rem; border-radius: 999px;
+  background: var(--accent-l); color: var(--accent-d);
+  font-size: .9rem; font-weight: 600;
+}
+.one__d { margin: 0; color: var(--ink-2); font-size: 1.04rem; line-height: 1.5; }
+.one__btn { width: 100%; }
 
-.svc__c--hot { border-color: var(--accent); background: var(--accent-l); }
-.svc__c--hot .svc__i { background: #fff; color: var(--accent); }
-.svc__c--hot:hover { border-color: var(--accent-d); }
+@media (min-width: 700px) {
+  .one { grid-template-columns: 64px 1fr auto; }
+  .one__btn { width: auto; }
+}
 
 /* --------------------------------------------------------------- cases */
 .cases { display: grid; gap: 1.4rem; grid-template-columns: 1fr; }
@@ -320,6 +332,10 @@ a:hover { color: var(--brand-d); }
 /* -------------------------------------------------------------- footer */
 .foot { background: var(--ink); color: rgba(255,255,255,.72); padding: 2.6rem 0; }
 .foot__in { text-align: center; }
+.foot__logo {
+  width: 120px; height: auto; margin: 0 auto .9rem; border-radius: 8px;
+  background: #fff; padding: .55rem .7rem;
+}
 .foot__b { font-size: 1.15rem; font-weight: 700; color: #fff; margin: 0 0 .4rem; }
 .foot__b span { font-weight: 400; color: rgba(255,255,255,.55); font-size: .95rem; }
 .foot__m { margin: 0 0 .9rem; font-size: .97rem; }
@@ -380,7 +396,7 @@ a:hover { color: var(--brand-d); }
   flex-direction: column;
 }
 .bk[open] { display: flex; }
-.bk::backdrop { background: rgba(17, 38, 42, .55); backdrop-filter: blur(3px); }
+.bk::backdrop { background: rgba(27, 25, 48, .55); backdrop-filter: blur(3px); }
 
 .bk__head {
   padding: 1.3rem clamp(1.2rem, 4vw, 1.9rem) 0;
@@ -542,6 +558,9 @@ figure[data-photo].is-missing figcaption { display: none; }
 @media (max-width: 420px) {
   .brand__text small { display: none; }   /* the sub-line crowds the header on small phones */
   .brand__mark { width: 40px; height: 40px; }
+  .brand__text strong { font-size: 1.05rem; }
+  /* three language buttons, not two, so they have to give up a little width */
+  .lang__b { min-width: 34px; padding: 0 .28rem; font-size: .8rem; }
 }
 
 @media (max-width: 860px) {
@@ -556,7 +575,6 @@ figure[data-photo].is-missing figcaption { display: none; }
 }
 
 @media (min-width: 560px) {
-  .svc { grid-template-columns: repeat(2, 1fr); }
   .cases { grid-template-columns: repeat(2, 1fr); }
   .done__dl { grid-template-columns: 9rem 1fr; }
 }
@@ -568,9 +586,11 @@ figure[data-photo].is-missing figcaption { display: none; }
 }
 
 @media (min-width: 1000px) {
-  .svc { grid-template-columns: repeat(4, 1fr); }
   .band__grid { grid-template-columns: 1fr 1fr 1.4fr; }
   .band__card { grid-column: auto; }
+  /* side by side with the text card, the photos fill the row instead of
+     letterboxing against their own 4:3 ratio */
+  .band__fig img { height: 100%; aspect-ratio: auto; }
   .about { grid-template-columns: 1.5fr 1fr; }
 }
 

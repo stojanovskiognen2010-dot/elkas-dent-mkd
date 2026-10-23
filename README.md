@@ -26,20 +26,28 @@ assets/js/site.js       i18n, open/closed status, booking flow
 assets/img/             photos + favicon
 ```
 
-## Photos — still to be added
+## Photos — in, from Facebook
 
-Four real photos were supplied but are **not yet in the repo**. Drop them into
-`assets/img/` with exactly these names and the page picks them up with no code change:
+All four are the practice's own, pulled from the public Facebook page. The page itself is
+behind a login wall, but the photo grid is not: headless Chrome `--dump-dom` on
+`facebook.com/Elkasd/photos` lists them as 206x206 thumbnails, and rewriting
+`ctp=s206x206` -> `ctp=s720x720` in the CDN URL returns the real 720x720 image.
 
 | File | Photo |
 |---|---|
-| `clinic-1.jpg` | Overhead — dentist in a face shield treating a patient in the chair |
-| `clinic-2.jpg` | Dentist with a curing light treating a male patient |
-| `case-1.jpg` | Before/after — worn upper teeth with old fillings → restored white smile |
-| `case-2.jpg` | Before/after — heavy tartar and staining → cleaned, restored smile |
+| `clinic-1.jpg` | Overhead, dentist in a face shield |
+| `clinic-2.jpg` | Dentist with the curing light |
+| `case-1.jpg` | Before/after, branded "Elkas Dent - Bitola" |
+| `case-2.jpg` | Before/after, second case |
+| `logo.jpg` | The real ELKAS DENT lockup |
 
-Until a file is there, its frame renders as a clearly-marked dashed empty slot naming the
-file it wants. Nothing is faked and no stock photography is used anywhere on the page.
+The CDN signatures expire, so those URLs cannot be refetched later as-is — rerun the dump.
+A sixth photo (the waiting area with the plum wall) only ever returns an error at 720 and is
+not on the site. The `.is-missing` dashed-slot fallback stays in `site.js` for any future slot.
+
+The logo came from `graph.facebook.com/Elkasd/picture?width=1200&height=1200`, which is public
+even though the page is not. The square mark in the header and the favicon are a hand-drawn SVG
+of it, shared with the sibling build in `Desktop client`.
 
 ## What is verified, and what is not
 
@@ -101,7 +109,17 @@ Worker, and keep the on-screen confirmation exactly as it is.
   `toLocaleDateString`.
 - **Macedonian is the source text**, held in the HTML. English lives in the `EN` dictionary
   keyed by `data-i18n`. Add a key to both when you add copy.
-- **Two designs exist. The live one is this: centred hero, icon service cards, teal and coral.**
+- **Colours come from the logo** — plum `#a4518f` and indigo `#3c3f9e`. Indigo carries the
+  structure, plum is reserved for the booking button. They live only in the `:root` block of
+  `site.css`; every rule goes through the variables, so a repalette is that block alone.
+- **Three languages: MK (in the HTML), EN and EL (dictionaries in `site.js`).** Onest has no
+  Greek subset, so `html[lang="el"]` swaps `--sans` to Manrope, and the Manrope stylesheet is
+  injected only when somebody actually picks Greek. Macedonian and English are untouched.
+  Greek month and weekday names are hand-spelled for the same reason the Macedonian ones are.
+- **Booking offers one thing: a 30-minute check-up.** That removed the old "what brings you in"
+  step, so the flow is two steps, not three. `SERVICE` and `SERVICE_MIN` in `site.js` are the
+  single source for its name and length.
+- **Two designs exist. The live one is this: centred hero, teal-era layout, logo colours.**
   A print-leaflet alternative (serif headings, hairline rules, numbered service list, no icons)
   was built and then set aside at the owner's choice; it is kept whole in `v2-print/`
   (`index.html`, `site.css`, `site.js`) and can be swapped back by copying those three files over

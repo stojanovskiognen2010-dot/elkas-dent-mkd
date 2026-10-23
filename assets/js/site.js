@@ -33,18 +33,22 @@
   const MONTHS = {
     mk: ['јануари', 'февруари', 'март', 'април', 'мај', 'јуни', 'јули', 'август', 'септември', 'октомври', 'ноември', 'декември'],
     en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    el: ['Ιανουαρίου', 'Φεβρουαρίου', 'Μαρτίου', 'Απριλίου', 'Μαΐου', 'Ιουνίου', 'Ιουλίου', 'Αυγούστου', 'Σεπτεμβρίου', 'Οκτωβρίου', 'Νοεμβρίου', 'Δεκεμβρίου'],
   };
   const MONTHS_SHORT = {
     mk: ['јан', 'фев', 'мар', 'апр', 'мај', 'јун', 'јул', 'авг', 'сеп', 'окт', 'ное', 'дек'],
     en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    el: ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαΐ', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοε', 'Δεκ'],
   };
   const DOW = {
     mk: ['недела', 'понеделник', 'вторник', 'среда', 'четврток', 'петок', 'сабота'],
     en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    el: ['Κυριακή', 'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο'],
   };
   const DOW_SHORT = {
     mk: ['нед', 'пон', 'вто', 'сре', 'чет', 'пет', 'саб'],
     en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    el: ['Κυρ', 'Δευ', 'Τρί', 'Τετ', 'Πέμ', 'Παρ', 'Σάβ'],
   };
 
   const EN = {
@@ -73,6 +77,7 @@
     'svc.h': 'What we do',
     'svc.lead': 'Choose whatever brings you in and book an appointment straight away.',
     'svc.1t': 'Check-up and advice', 'svc.1d': 'We examine you and tell you clearly what needs doing.',
+    'svc.len': '30 minutes',
     'svc.2t': 'Scale and polish',    'svc.2d': 'Removing tartar and polishing the teeth.',
     'svc.3t': 'Fillings',            'svc.3d': 'A white filling for a decayed tooth, in the colour of the tooth.',
     'svc.4t': 'Crowns and bridges',  'svc.4d': 'A crown for a damaged tooth, a bridge where a tooth is missing.',
@@ -103,7 +108,7 @@
     'd.fri': 'Friday', 'd.sat': 'Saturday', 'd.sun': 'Sunday',
 
     'st.h': 'Book your appointment now',
-    'st.p': 'Three questions: what brings you in, which day suits you and how to reach you. Nothing more.',
+    'st.p': 'Two questions: which day suits you and how to reach you. Nothing more.',
 
     'ct.eyebrow': 'Contact',
     'ct.h': 'Where we are and how to reach us',
@@ -142,11 +147,11 @@
     'status.closedSoon': 'Closed · opens tomorrow at 09:00',
     'status.closedMon': 'Closed · opens Monday at 09:00',
     'status.closedToday': 'Closed · opens today at 09:00',
-    'bk.step': 'Step {n} of 3',
+    'bk.step': 'Step {n} of 2',
     'bk.stepDone': 'All done',
-    'bk.t1': 'What brings you in?',
-    'bk.t2': 'When suits you?',
-    'bk.t3': 'How can we reach you?',
+    'bk.t1': 'When suits you?',
+    'bk.t2': 'How can we reach you?',
+    'bk.min': 'minutes',
     'bk.tDone': 'Thank you',
     'bk.chooseTime': 'Choose a time on {d}:',
     'bk.noTimes': 'No free times left on this day. Please pick another day.',
@@ -154,7 +159,7 @@
     'bk.pickFirst': 'Please choose a day and a time.',
     'bk.errName': 'Please write your name.',
     'bk.errPhone': 'Please write a phone number we can reach you on.',
-    'bk.sReason': 'Reason', 'bk.sWhen': 'When', 'bk.sName': 'Name',
+    'bk.sReason': 'Service', 'bk.sWhen': 'When', 'bk.sName': 'Name',
     'bk.sPhone': 'Phone', 'bk.sMail': 'Email', 'bk.sNote': 'Note',
     'bk.sFirst': 'First visit', 'bk.yes': 'Yes',
     'bk.msgTitle': 'Appointment request — Elkas Dent',
@@ -165,41 +170,136 @@
     'sv.text': 'You have an appointment: {x}',
   };
 
-  const REASONS = [
-    { id: 'pregled',  mk: 'Преглед и совет',        en: 'Check-up and advice' , ic: 'search' },
-    { id: 'kamen',    mk: 'Чистење забен камен',    en: 'Scale and polish' , ic: 'drop' },
-    { id: 'plomba',   mk: 'Пломба',                 en: 'A filling' , ic: 'tooth' },
-    { id: 'koronka',  mk: 'Коронка или мост',       en: 'Crown or bridge' , ic: 'crown' },
-    { id: 'proteza',  mk: 'Протеза',                en: 'Denture' , ic: 'denture' },
-    { id: 'vadenje',  mk: 'Вадење заб',             en: 'Extraction' , ic: 'minus' },
-    { id: 'estetika', mk: 'Белење и фасети',        en: 'Whitening and veneers' , ic: 'spark' },
-    { id: 'bolka',    mk: 'Ме боли заб',            en: 'I have toothache' , ic: 'alert' },
-    { id: 'drugo',    mk: 'Друго / не знам што ми треба', en: 'Something else / not sure' , ic: 'dots' },
-  ];
+  /* Greek. Bitola sits 15 km from the Greek border and patients cross for dental
+     work, so the third language is theirs. Onest carries no Greek glyphs, so the
+     family is swapped under html[lang="el"] — see loadGreekFont(). */
+  const EL = {
+    'skip': 'Στο περιεχόμενο',
+    'brand.name': 'Elkas Dent',
+    'brand.sub': 'Οδοντιατρείο · Μπίτολα',
 
+    'cta.book': 'Κλείστε ραντεβού',
+    'cta.bookShort': 'Κλείστε ραντεβού',
+    'cta.call': 'Καλέστε: 078 438 106',
+    'cta.callShort': 'Ή καλέστε μας',
+    'cta.callNow': 'Καλέστε',
 
-  const ICONS = {
-    search:  '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/>',
-    drop:    '<path d="M12 3c2 2.5 4.5 3.6 4.5 7.5a4.5 4.5 0 0 1-9 0C7.5 6.6 10 5.5 12 3Z"/>',
-    tooth:   '<path d="M12 5.2C10.6 4.1 9.2 3.6 7.9 3.6 5.2 3.6 3.4 5.7 3.4 8.8c0 2.3.6 4 1.3 6.2.5 1.6.8 3 1 4.1.2 1 .7 1.5 1.4 1.5.8 0 1.2-.6 1.5-1.8l.8-3c.3-1.1.9-1.7 1.6-1.7s1.3.6 1.6 1.7l.8 3c.3 1.2.7 1.8 1.5 1.8.7 0 1.2-.5 1.4-1.5.2-1.1.5-2.5 1-4.1.7-2.2 1.3-3.9 1.3-6.2 0-3.1-1.8-5.2-4.5-5.2-1.3 0-2.7.5-4.1 1.6Z"/>',
-    crown:   '<path d="M3 9.5 6.5 12 12 5.5 17.5 12 21 9.5V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/>',
-    denture: '<path d="M4 8.5C4 6 7.6 4.5 12 4.5S20 6 20 8.5c0 3-1.4 4.5-3 4.5s-1.6-2-5-2-3.4 2-5 2-3-1.5-3-4.5Z"/><path d="M6 16.5h12"/>',
-    minus:   '<path d="M5 12h14"/><circle cx="12" cy="12" r="9"/>',
-    spark:   '<path d="m12 3 1.9 4.4L18.5 9l-4.6 1.6L12 15l-1.9-4.4L5.5 9l4.6-1.6Z"/><path d="m18.6 15.6.7 2.1 2.2.8-2.2.8-.7 2.2-.8-2.2-2.2-.8 2.2-.8Z"/>',
-    alert:   '<path d="M12 3.2 2.6 19.4a1.2 1.2 0 0 0 1 1.8h16.8a1.2 1.2 0 0 0 1-1.8Z"/><path d="M12 9.5v4.2M12 17.2h.01"/>',
-    dots:    '<circle cx="5.5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="18.5" cy="12" r="1.4"/>',
+    'hero.t1': 'Ο οδοντίατρός σας',
+    'hero.t2': 'στη Μπίτολα',
+    'hero.lead': 'Ιδιωτικό οδοντιατρείο στην οδό Σβ. Κλίμεντ Οχρίντσκι 33. Ανοιχτά από Δευτέρα έως Σάββατο, 09:00 με 17:00.',
+    'hero.note': 'Το κλείσιμο ραντεβού παίρνει ένα λεπτό. Δεν χρειάζεται εγγραφή.',
+
+    'band.h': 'Αρκετός χρόνος για κάθε ασθενή',
+    'band.p': 'Στο Elkas Dent πρώτα σας εξετάζουμε και σας εξηγούμε με απλά λόγια τι χρειάζεται να γίνει, πόσο κοστίζει και πόσες επισκέψεις θα χρειαστούν. Τίποτα δεν γίνεται πριν συμφωνήσετε.',
+    'band.l1': 'Εργαζόμαστε και το Σάββατο',
+    'band.l2': 'Στο κέντρο της Μπίτολα, στην Πελαγκόνκα 2',
+    'band.l3': 'Σας λέμε την τιμή εκ των προτέρων',
+
+    'svc.eyebrow': 'Υπηρεσίες',
+    'svc.h': 'Τι κάνουμε',
+    'svc.lead': 'Online κλείνετε οδοντιατρικό έλεγχο. Όλα τα υπόλοιπα συμφωνούνται στον ίδιο τον έλεγχο.',
+    'svc.1t': 'Οδοντιατρικός έλεγχος',
+    'svc.1d': 'Σας εξετάζουμε και σας λέμε καθαρά τι χρειάζεται να γίνει.',
+    'svc.len': '30 λεπτά',
+
+    'case.eyebrow': 'Η δουλειά μας',
+    'case.h': 'Πριν και μετά',
+    'case.lead': 'Πραγματικοί ασθενείς του Elkas Dent. Στην επάνω φωτογραφία είναι η κατάσταση πριν από τη δουλειά, στην κάτω μετά από αυτήν.',
+    'case.1': 'Αποκατάσταση των μπροστινών δοντιών',
+    'case.2': 'Καθαρισμός και αποκατάσταση άνω και κάτω γνάθου',
+    'case.note': 'Κάθε στόμα είναι διαφορετικό. Τι ακριβώς μπορεί να γίνει στη δική σας περίπτωση θα το ξέρουμε μετά την εξέταση.',
+
+    'ab.eyebrow': 'Για το ιατρείο',
+    'ab.h': 'Λίγα λόγια για το Elkas Dent',
+    'ab.p1': 'Το Elkas Dent είναι ιδιωτικό οδοντιατρείο στη Μπίτολα, στην οδό Σβ. Κλίμεντ Οχρίντσκι 33, στη συνοικία Πελαγκόνκα 2. Εργαζόμαστε έξι ημέρες την εβδομάδα, από Δευτέρα έως Σάββατο, από τις 09:00 έως τις 17:00.',
+    'ab.p2': 'Μας επισκέπτονται παιδιά και ενήλικες — για τακτικό έλεγχο και καθαρισμό, για σφραγίσματα και θήκες, για οδοντοστοιχίες και για αισθητική αποκατάσταση του χαμόγελου. Αν δεν έχετε πάει σε οδοντίατρο για μεγάλο διάστημα, πείτε μας το όταν κλείνετε ραντεβού· θα αφιερώσουμε περισσότερο χρόνο στην πρώτη επίσκεψη.',
+    'ab.score': '5.0 ★',
+    'ab.google': 'στο Google (1 κριτική)',
+    'ab.fb': 'συνιστούν στο Facebook (9 κριτικές)',
+    'ab.fol': 'ακόλουθοι στο Facebook',
+
+    'hr.h': 'Ωράριο',
+    'hr.closed': 'Κλειστά',
+    'd.mon': 'Δευτέρα', 'd.tue': 'Τρίτη', 'd.wed': 'Τετάρτη', 'd.thu': 'Πέμπτη',
+    'd.fri': 'Παρασκευή', 'd.sat': 'Σάββατο', 'd.sun': 'Κυριακή',
+
+    'st.h': 'Κλείστε ραντεβού τώρα',
+    'st.p': 'Δύο ερωτήσεις: ποια μέρα σας βολεύει και πώς θα σας βρούμε. Τίποτα άλλο.',
+
+    'ct.eyebrow': 'Επικοινωνία',
+    'ct.h': 'Πού βρισκόμαστε και πώς θα μας βρείτε',
+    'ct.addr': 'Διεύθυνση',
+    'ct.dir': 'Οδηγίες πρόσβασης',
+    'ct.tel': 'Τηλέφωνο',
+    'ct.hours': 'Ωράριο',
+    'ct.hours1': 'Δευτέρα – Σάββατο: 09:00 – 17:00',
+    'ct.hours2': 'Κυριακή: κλειστά',
+
+    'ft.addr': 'Οδός Σβ. Κλίμεντ Οχρίντσκι 33, Πελαγκόνκα 2, 7000 Μπίτολα · 078 438 106',
+    'ft.note': 'Οι πληροφορίες της σελίδας είναι γενικές και δεν αντικαθιστούν την οδοντιατρική εξέταση.',
+
+    'bk.pickDay': 'Επιλέξτε ημέρα:',
+    'bk.name': 'Ονοματεπώνυμο',
+    'bk.tel': 'Τηλέφωνο',
+    'bk.telHint': 'Σε αυτόν τον αριθμό θα σας καλέσουμε για να επιβεβαιώσουμε το ραντεβού.',
+    'bk.mail': 'Email',
+    'bk.optional': 'προαιρετικό',
+    'bk.note': 'Θέλετε να μας πείτε κάτι;',
+    'bk.first': 'Έρχομαι για πρώτη φορά',
+    'bk.doneH': 'Το ραντεβού σας καταγράφηκε',
+    'bk.doneP': 'Θα σας καλέσουμε για να επιβεβαιώσουμε το ραντεβού. Αν κάτι αλλάξει, καλέστε μας στο 078 438 106.',
+    'bk.ics': 'Προσθήκη στο ημερολόγιο',
+    'bk.viber': 'Αποστολή με Viber',
+    'bk.sms': 'Αποστολή SMS',
+    'bk.print': 'Εκτύπωση',
+    'bk.back': 'Πίσω',
+    'bk.next': 'Συνέχεια',
+    'bk.close': 'Κλείσιμο',
+    'sv.clear': 'Απόκρυψη',
+    'sv.hint': 'Αυτό είναι μόνο υπενθύμιση σε αυτό το τηλέφωνο. Για ακύρωση καλέστε στο 078 438 106.',
+
+    /* script-only strings */
+    'status.open': 'Ανοιχτά τώρα · έως τις 17:00',
+    'status.closedSoon': 'Κλειστά · ανοίγουμε αύριο στις 09:00',
+    'status.closedMon': 'Κλειστά · ανοίγουμε τη Δευτέρα στις 09:00',
+    'status.closedToday': 'Κλειστά · ανοίγουμε σήμερα στις 09:00',
+    'bk.step': 'Βήμα {n} από 2',
+    'bk.stepDone': 'Ολοκληρώθηκε',
+    'bk.t1': 'Πότε σας βολεύει;',
+    'bk.t2': 'Πώς θα σας βρούμε;',
+    'bk.tDone': 'Σας ευχαριστούμε',
+    'bk.min': 'λεπτά',
+    'bk.chooseTime': 'Επιλέξτε ώρα για {d}:',
+    'bk.noTimes': 'Δεν υπάρχουν ελεύθερες ώρες εκείνη την ημέρα. Επιλέξτε άλλη ημέρα.',
+    'bk.tapDay': 'Πατήστε μία από τις ημέρες παραπάνω και θα εμφανιστούν οι ελεύθερες ώρες.',
+    'bk.pickFirst': 'Επιλέξτε ημέρα και ώρα.',
+    'bk.errName': 'Παρακαλούμε γράψτε το όνομά σας.',
+    'bk.errPhone': 'Παρακαλούμε γράψτε ένα τηλέφωνο για να σας βρούμε.',
+    'bk.sReason': 'Υπηρεσία', 'bk.sWhen': 'Πότε', 'bk.sName': 'Όνομα',
+    'bk.sPhone': 'Τηλέφωνο', 'bk.sMail': 'Email', 'bk.sNote': 'Σημείωση',
+    'bk.sFirst': 'Πρώτη επίσκεψη', 'bk.yes': 'Ναι',
+    'bk.msgTitle': 'Αίτημα ραντεβού — Elkas Dent',
+    'bk.icsTitle': 'Οδοντίατρος — Elkas Dent',
+    'bk.icsPlace': 'Elkas Dent, οδός Σβ. Κλίμεντ Οχρίντσκι 33, Πελαγκόνκα 2, Μπίτολα',
+    'bk.icsNote': 'Το ραντεβού ζητήθηκε μέσω της ιστοσελίδας του Elkas Dent. Το ιατρείο θα καλέσει για επιβεβαίωση.',
+    'copy.done': 'Το κείμενο αντιγράφηκε.',
+    'sv.text': 'Έχετε ραντεβού: {x}',
   };
 
-  function svg(name, size = 22) {
-    return `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor"
-      stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ''}</svg>`;
-  }
+  const DICTS = { en: EN, el: EL };
+
+  // One bookable service. Everything else is agreed at the check-up itself.
+  const SERVICE = { mk: 'Преглед', en: 'Check-up', el: 'Οδοντιατρικός έλεγχος' };
+  const SERVICE_MIN = 30;
+
 
   /* ------------------------------------------------------- language swap */
   let lang = 'mk';
   const originals = new Map();
 
-  const t = (key) => (lang === 'en' ? (EN[key] ?? key) : (originals.get(key) ?? key));
+  const t = (key) => (lang === 'mk'
+    ? (originals.get(key) ?? key)
+    : (DICTS[lang]?.[key] ?? originals.get(key) ?? key));
 
   function captureOriginals() {
     $$('[data-i18n]').forEach((node) => {
@@ -211,11 +311,11 @@
       'status.closedSoon': 'Затворено · отвора утре во 09:00',
       'status.closedMon': 'Затворено · отвора во понеделник во 09:00',
       'status.closedToday': 'Затворено · отвора денес во 09:00',
-      'bk.step': 'Чекор {n} од 3',
+      'bk.step': 'Чекор {n} од 2',
       'bk.stepDone': 'Завршено',
-      'bk.t1': 'Зошто доаѓате?',
-      'bk.t2': 'Кога ви одговара?',
-      'bk.t3': 'Како да ве добиеме?',
+      'bk.t1': 'Кога ви одговара?',
+      'bk.t2': 'Како да ве добиеме?',
+      'bk.min': 'минути',
       'bk.tDone': 'Ви благодариме',
       'bk.chooseTime': 'Изберете час за {d}:',
       'bk.noTimes': 'Нема слободни часови тој ден. Изберете друг ден.',
@@ -223,7 +323,7 @@
       'bk.pickFirst': 'Изберете ден и час.',
       'bk.errName': 'Ве молиме напишете го вашето име.',
       'bk.errPhone': 'Ве молиме напишете телефон на кој ќе ве добиеме.',
-      'bk.sReason': 'Причина', 'bk.sWhen': 'Кога', 'bk.sName': 'Име',
+      'bk.sReason': 'Услуга', 'bk.sWhen': 'Кога', 'bk.sName': 'Име',
       'bk.sPhone': 'Телефон', 'bk.sMail': 'Е-пошта', 'bk.sNote': 'Белешка',
       'bk.sFirst': 'Прва посета', 'bk.yes': 'Да',
       'bk.msgTitle': 'Барање за термин — Елкас Дент',
@@ -236,16 +336,32 @@
     }).forEach(([k, v]) => { if (!originals.has(k)) originals.set(k, v); });
   }
 
+  // Onest ships no Greek glyphs. Rather than make every visitor pay for a second
+  // family, the Greek face is fetched the first time somebody actually asks for it.
+  let greekFontAsked = false;
+  function loadGreekFont() {
+    if (greekFontAsked) return;
+    greekFontAsked = true;
+    const link = el('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap';
+    document.head.append(link);
+  }
+
   function applyLang(next) {
     lang = next;
     document.documentElement.lang = next;
-    document.title = next === 'en'
-      ? 'Elkas Dent MKD — Dental practice in Bitola'
-      : 'Elkas Dent MKD — Стоматолошка ординација во Битола';
+    if (next === 'el') loadGreekFont();
+    document.title = {
+      en: 'Elkas Dent MKD — Dental practice in Bitola',
+      el: 'Elkas Dent MKD — Οδοντιατρείο στη Μπίτολα',
+    }[next] || 'Elkas Dent MKD — Стоматолошка ординација во Битола';
     $$('[data-i18n]').forEach((node) => { node.textContent = t(node.dataset.i18n); });
     $$('img[data-alt-en]').forEach((img) => {
       if (!img.dataset.altMk) img.dataset.altMk = img.alt;
-      img.alt = next === 'en' ? img.dataset.altEn : img.dataset.altMk;
+      img.alt = (next === 'en' && img.dataset.altEn)
+        || (next === 'el' && img.dataset.altEl)
+        || img.dataset.altMk;
     });
     $$('[data-aria]').forEach((node) => { node.setAttribute('aria-label', t(node.dataset.aria)); });
     $$('[data-lang]').forEach((b) => {
@@ -270,7 +386,7 @@
   function longDate(key, capital = true) {
     const d = fromKey(key);
     const day = DOW[lang][d.getDay()];
-    const name = capital || lang === 'en' ? `${day.charAt(0).toUpperCase()}${day.slice(1)}` : day;
+    const name = capital || lang !== 'mk' ? `${day.charAt(0).toUpperCase()}${day.slice(1)}` : day;
     return `${name}, ${d.getDate()} ${MONTHS[lang][d.getMonth()]}`;
   }
 
@@ -375,37 +491,14 @@
 
   /* ============================================================== booking */
   const dialog = $('[data-bk]');
-  const bkForm = $('form[data-pane="3"]', dialog);
+  const bkForm = $('form[data-pane="2"]', dialog);
   const footer = $('[data-bk-foot]', dialog);
   const nextBtn = $('[data-bk-next]', dialog);
   const backBtn = $('[data-bk-back]', dialog);
 
-  const state = { step: 1, reason: null, date: null, time: null, opener: null };
+  const state = { step: 1, date: null, time: null, opener: null };
 
-  const reasonName = (id) => {
-    const r = REASONS.find((x) => x.id === id);
-    return r ? r[lang] : '';
-  };
-
-  /* step 1 ---------------------------------------------------------------- */
-  function renderReasons() {
-    const list = $('[data-bk-reasons]', dialog);
-    list.replaceChildren(...REASONS.map((r) => {
-      const li = el('li');
-      const b = el('button', 'pick__b');
-      b.type = 'button';
-      b.innerHTML = `<span class="pick__ic">${svg(r.ic)}</span>`;
-      b.append(el('span', '', r[lang]));
-      if (state.reason === r.id) b.classList.add('is-on');
-      b.addEventListener('click', () => {
-        state.reason = r.id;
-        renderReasons();
-        setTimeout(() => { if (state.step === 1 && state.reason === r.id) go(2); }, 180);
-      });
-      li.append(b);
-      return li;
-    }));
-  }
+  const serviceName = () => `${SERVICE[lang]} · ${SERVICE_MIN} ${t('bk.min')}`;
 
   /* step 2 ---------------------------------------------------------------- */
   function renderDays() {
@@ -503,7 +596,7 @@
   function summaryRows() {
     const { name, phone, email, note, first } = details();
     const rows = [
-      [t('bk.sReason'), reasonName(state.reason)],
+      [t('bk.sReason'), serviceName()],
       [t('bk.sWhen'), `${longDate(state.date)}, ${state.time}`],
       [t('bk.sName'), name],
       [t('bk.sPhone'), phone],
@@ -528,10 +621,9 @@
   }
 
   /* ---------------------------------------------------------- navigation */
-  const TITLES = { 1: 'bk.t1', 2: 'bk.t2', 3: 'bk.t3', done: 'bk.tDone' };
+  const TITLES = { 1: 'bk.t1', 2: 'bk.t2', done: 'bk.tDone' };
 
   function renderAll() {
-    renderReasons();
     renderDays();
     renderTimes();
     if (state.step === 'done') renderSummary();
@@ -540,33 +632,32 @@
   }
 
   function paintHead() {
-    const n = state.step === 'done' ? 3 : state.step;
+    const n = state.step === 'done' ? 2 : state.step;
     $('[data-bk-stepline]', dialog).textContent =
       state.step === 'done' ? t('bk.stepDone') : t('bk.step').replace('{n}', String(n));
     $('[data-bk-title]', dialog).textContent = t(TITLES[state.step]);
-    $('[data-bk-bar]', dialog).style.width = `${(state.step === 'done' ? 3 : state.step) / 3 * 100}%`;
+    $('[data-bk-bar]', dialog).style.width = `${(state.step === 'done' ? 2 : state.step) / 2 * 100}%`;
     $('[data-bk-live]', dialog).textContent = t(TITLES[state.step]);
   }
 
   function updateFoot() {
-    // step 1 advances on tap and has nothing to go back to, so it carries no footer
-    if (state.step === 'done' || state.step === 1) { footer.hidden = true; return; }
+    if (state.step === 'done') { footer.hidden = true; return; }
     footer.hidden = false;
-    backBtn.hidden = false;
+    backBtn.hidden = state.step === 1;        // nothing before picking a day
     nextBtn.hidden = false;
-    nextBtn.disabled = state.step === 2 && !(state.date && state.time);
+    nextBtn.disabled = state.step === 1 && !(state.date && state.time);
   }
 
   function go(step) {
     state.step = step;
     $$('[data-pane]', dialog).forEach((p) => { p.hidden = p.dataset.pane !== String(step); });
-    if (step === 2) { renderDays(); renderTimes(); }
+    if (step === 1) { renderDays(); renderTimes(); }
     if (step === 'done') renderSummary();
     paintHead();
     updateFoot();
     $('[data-bk-body]', dialog).scrollTop = 0;
 
-    if (step !== 1) focusFirst();
+    focusFirst();
   }
 
   // a keyboard visitor should land on the first choice, not on the close button
@@ -576,27 +667,25 @@
   }
 
   nextBtn.addEventListener('click', () => {
-    if (state.step === 2) {
+    if (state.step === 1) {
       if (!(state.date && state.time)) return;
-      go(3);
+      go(2);
       return;
     }
-    if (state.step === 3 && validateDetails()) {
+    if (state.step === 2 && validateDetails()) {
       saveAppointment();
       go('done');
     }
   });
 
   backBtn.addEventListener('click', () => {
-    if (state.step === 3) go(2);
-    else if (state.step === 2) go(1);
+    if (state.step === 2) go(1);
   });
 
-  function openBooking(reason) {
+  function openBooking() {
     state.opener = document.activeElement;
-    if (reason) state.reason = reason;
     renderAll();
-    go(state.reason ? 2 : 1);
+    go(1);
     if (!dialog.open) dialog.showModal();
     focusFirst();
   }
@@ -608,7 +697,7 @@
   dialog.addEventListener('close', () => {
     if (state.step === 'done') {
       // start clean next time, keeping the saved appointment on the page
-      state.step = 1; state.reason = null; state.date = null; state.time = null;
+      state.step = 1; state.date = null; state.time = null;
       bkForm.reset();
       $('[data-bk-error]', dialog).hidden = true;
       go(1);
@@ -617,8 +706,7 @@
   });
 
   $('[data-bk-close]', dialog).addEventListener('click', closeBooking);
-  $$('[data-open-book]').forEach((b) => b.addEventListener('click', () => openBooking(null)));
-  $$('[data-book]').forEach((b) => b.addEventListener('click', () => openBooking(b.dataset.book)));
+  $$('[data-open-book], [data-book]').forEach((b) => b.addEventListener('click', () => openBooking()));
 
   /* ------------------------------------------------------- done actions */
   $$('[data-bk-send]', dialog).forEach((btn) => btn.addEventListener('click', () => {
@@ -647,7 +735,7 @@
       `UID:${Date.now()}@elkas-dent`, `DTSTAMP:${stamp}`,
       `DTSTART:${day}T${pad(hh)}${pad(mm)}00`,
       `DTEND:${day}T${pad(Math.floor(end / 60))}${pad(end % 60)}00`,
-      `SUMMARY:${esc(`${t('bk.icsTitle')}: ${reasonName(state.reason)}`)}`,
+      `SUMMARY:${esc(`${t('bk.icsTitle')}: ${serviceName()}`)}`,
       `LOCATION:${esc(t('bk.icsPlace'))}`,
       `DESCRIPTION:${esc(t('bk.icsNote'))}`,
       'END:VEVENT', 'END:VCALENDAR',
@@ -668,7 +756,7 @@
     const { name, phone } = details();
     try {
       localStorage.setItem('elkas.booking', JSON.stringify({
-        reason: state.reason, date: state.date, time: state.time, name, phone,
+        date: state.date, time: state.time, name, phone,
       }));
     } catch (_) { /* private mode — the confirmation on screen still stands */ }
     renderSaved();
@@ -692,7 +780,7 @@
     if (!box) return;
     const b = readAppointment();
     if (!b) { box.hidden = true; return; }
-    const what = `${reasonName(b.reason)} · ${longDate(b.date)}, ${b.time}`;
+    const what = `${serviceName()} · ${longDate(b.date)}, ${b.time}`;
     $('[data-saved-text]', box).textContent = t('sv.text').replace('{x}', what);
     box.hidden = false;
   }
@@ -718,7 +806,7 @@
   try { saved = localStorage.getItem('elkas.lang'); } catch (_) { /* ignore */ }
   chrome();
   markToday();
-  applyLang(saved === 'en' ? 'en' : 'mk');
+  applyLang(['en', 'el'].includes(saved) ? saved : 'mk');
   renderAll();
   setInterval(paintStatus, 60_000);
 })();

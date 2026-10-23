@@ -6,7 +6,7 @@
 <title>Elkas Dent MKD — Стоматолошка ординација во Битола</title>
 <meta name="description" content="Елкас Дент — приватна стоматолошка ординација во Битола, ул. Св. Климент Охридски 33. Отворено понеделник–сабота, 09:00–17:00. Закажете термин онлајн за една минута.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#0b4f5a">
+<meta name="theme-color" content="#3c3f9e">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,8 +22,13 @@
   <div class="head__in">
     <a class="brand" href="#top" aria-label="Елкас Дент — почеток">
       <span class="brand__mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 5.2C10.6 4.1 9.2 3.6 7.9 3.6 5.2 3.6 3.4 5.7 3.4 8.8c0 2.3.6 4 1.3 6.2.5 1.6.8 3 1 4.1.2 1 .7 1.5 1.4 1.5.8 0 1.2-.6 1.5-1.8l.8-3c.3-1.1.9-1.7 1.6-1.7s1.3.6 1.6 1.7l.8 3c.3 1.2.7 1.8 1.5 1.8.7 0 1.2-.5 1.4-1.5.2-1.1.5-2.5 1-4.1.7-2.2 1.3-3.9 1.3-6.2 0-3.1-1.8-5.2-4.5-5.2-1.3 0-2.7.5-4.1 1.6Z"/>
+        <svg viewBox="0 0 100 100">
+          <clipPath id="bm"><rect x="2" y="2" width="96" height="96" rx="19"/></clipPath>
+          <g clip-path="url(#bm)">
+            <rect x="2" y="2" width="48" height="96" fill="#a4518f"/>
+            <rect x="50" y="2" width="48" height="96" fill="#3c3f9e"/>
+            <path fill="#fff" d="M76 50c0-12-8-22-19-22-7 0-11 4-15 4-6 0-12-3-16-5-2-1-3 1-1 4 4 6 6 12 6 19s-2 13-6 19c-2 3-1 5 1 4 4-2 10-5 16-5 4 0 8 4 15 4 11 0 19-10 19-22z"/>
+          </g>
         </svg>
       </span>
       <span class="brand__text">
@@ -45,6 +50,7 @@
       <div class="lang" role="group" aria-label="Јазик" data-lang-label>
         <button type="button" class="lang__b is-on" data-lang="mk" aria-pressed="true">МК</button>
         <button type="button" class="lang__b" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" class="lang__b" data-lang="el" aria-pressed="false">ΕΛ</button>
       </div>
     </div>
   </div>
@@ -91,14 +97,16 @@
   <section class="band" aria-label="Ординацијата">
     <div class="wrap band__grid">
       <figure class="band__fig" data-photo>
-        <img src="assets/img/clinic-1.jpg" width="1000" height="1333" loading="lazy" decoding="async"
+        <img src="assets/img/clinic-1.jpg" width="720" height="720" loading="lazy" decoding="async"
              alt="Заболекарка во Елкас Дент работи на пациент во стоматолошката столица."
-             data-alt-en="A dentist at Elkas Dent treating a patient in the chair.">
+             data-alt-en="A dentist at Elkas Dent treating a patient in the chair."
+               data-alt-el="Οδοντίατρος του Elkas Dent περιθάλπει ασθενή στην οδοντιατρική έδρα.">
       </figure>
       <figure class="band__fig" data-photo>
-        <img src="assets/img/clinic-2.jpg" width="1000" height="1000" loading="lazy" decoding="async"
+        <img src="assets/img/clinic-2.jpg" width="720" height="720" loading="lazy" decoding="async"
              alt="Заболекарка во Елкас Дент поставува пломба со светлосна лампа."
-             data-alt-en="A dentist at Elkas Dent placing a filling with a curing light.">
+             data-alt-en="A dentist at Elkas Dent placing a filling with a curing light."
+               data-alt-el="Οδοντίατρος του Elkas Dent τοποθετεί σφράγισμα με λάμπα πολυμερισμού.">
       </figure>
       <div class="band__card">
         <h2 class="band__h" data-i18n="band.h">Доволно време за секој пациент</h2>
@@ -123,59 +131,23 @@
         <p class="eyebrow" data-i18n="svc.eyebrow">Услуги</p>
         <h2 class="sec__h" data-i18n="svc.h">Што правиме</h2>
         <p class="sec__lead" data-i18n="svc.lead">
-          Изберете го она поради што доаѓате и веднаш закажете термин.
+          Онлајн се закажува преглед. Сè друго се договара на самиот преглед.
         </p>
       </header>
 
-      <ul class="svc">
-        <li><button class="svc__c" data-book="pregled">
-          <span class="svc__i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg></span>
-          <span class="svc__t" data-i18n="svc.1t">Преглед и совет</span>
-          <span class="svc__d" data-i18n="svc.1d">Ве прегледуваме и ви кажуваме јасно што треба да се направи.</span>
-        </button></li>
-
-        <li><button class="svc__c" data-book="kamen">
-          <span class="svc__i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 2.5 4.5 3.6 4.5 7.5a4.5 4.5 0 0 1-9 0C7.5 6.6 10 5.5 12 3Z"/><path d="M5 20h14"/></svg></span>
-          <span class="svc__t" data-i18n="svc.2t">Чистење забен камен</span>
-          <span class="svc__d" data-i18n="svc.2d">Отстранување на наслаги и полирање на забите.</span>
-        </button></li>
-
-        <li><button class="svc__c" data-book="plomba">
-          <span class="svc__i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.6C10.8 3.7 9.6 3.3 8.5 3.3 6.2 3.3 4.7 5 4.7 7.6c0 2 .5 3.4 1.1 5.3.4 1.4.7 2.5.9 3.5.2.9.6 1.3 1.2 1.3.7 0 1-.5 1.2-1.5l.7-2.6c.2-.9.8-1.4 1.4-1.4"/><path d="M14.8 12.2c.6 0 1.1.5 1.3 1.4l.7 2.6c.3 1 .6 1.5 1.3 1.5.6 0 1-.4 1.2-1.3.2-1 .4-2.1.9-3.5.6-1.9 1.1-3.3 1.1-5.3 0-2.6-1.5-4.3-3.8-4.3-1.1 0-2.3.4-3.5 1.3"/></svg></span>
-          <span class="svc__t" data-i18n="svc.3t">Пломби</span>
-          <span class="svc__d" data-i18n="svc.3d">Бела пломба за расипан заб, во боја на забот.</span>
-        </button></li>
-
-        <li><button class="svc__c" data-book="koronka">
-          <span class="svc__i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 6.5 12 12 5.5 17.5 12 21 9.5V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/></svg></span>
-          <span class="svc__t" data-i18n="svc.4t">Коронки и мостови</span>
-          <span class="svc__d" data-i18n="svc.4d">Коронка за оштетен заб, мост на местото од изваден заб.</span>
-        </button></li>
-
-        <li><button class="svc__c" data-book="proteza">
-          <span class="svc__i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5C4 6 7.6 4.5 12 4.5S20 6 20 8.5c0 3-1.4 4.5-3 4.5s-1.6-2-5-2-3.4 2-5 2-3-1.5-3-4.5Z"/><path d="M6 16.5h12"/></svg></span>
-          <span class="svc__t" data-i18n="svc.5t">Протези</span>
-          <span class="svc__d" data-i18n="svc.5d">Целосни и делумни протези.</span>
-        </button></li>
-
-        <li><button class="svc__c" data-book="vadenje">
-          <span class="svc__i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5C10.7 3.6 9.5 3.2 8.4 3.2 6 3.2 4.4 5 4.4 7.7c0 2 .5 3.5 1.1 5.4.4 1.4.7 2.5.9 3.5.2 1 .6 1.4 1.2 1.4.7 0 1.1-.5 1.3-1.6l.7-2.6c.2-1 .7-1.5 1.4-1.5"/><path d="M15 15.5h6M18 12.5v6"/></svg></span>
-          <span class="svc__t" data-i18n="svc.6t">Вадење заб</span>
-          <span class="svc__d" data-i18n="svc.6d">Со локална анестезија.</span>
-        </button></li>
-
-        <li><button class="svc__c" data-book="estetika">
-          <span class="svc__i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 4.4L18.5 9l-4.6 1.6L12 15l-1.9-4.4L5.5 9l4.6-1.6Z"/><path d="M18.5 15.5 19.3 18l2.2.8-2.2.8-.8 2.4-.8-2.4-2.2-.8 2.2-.8Z"/></svg></span>
-          <span class="svc__t" data-i18n="svc.7t">Белење и фасети</span>
-          <span class="svc__d" data-i18n="svc.7d">Естетска обнова за посветла и порамна насмевка.</span>
-        </button></li>
-
-        <li><button class="svc__c svc__c--hot" data-book="bolka">
-          <span class="svc__i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2 2.6 19.4a1.2 1.2 0 0 0 1 1.8h16.8a1.2 1.2 0 0 0 1-1.8Z"/><path d="M12 9.5v4.2M12 17.2h.01"/></svg></span>
-          <span class="svc__t" data-i18n="svc.8t">Ме боли заб</span>
-          <span class="svc__d" data-i18n="svc.8d">Ако ве боли, најдобро е веднаш да се јавите на телефон.</span>
-        </button></li>
-      </ul>
+      <div class="one">
+        <div class="one__i" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+        </div>
+        <div class="one__body">
+          <p class="one__t" data-i18n="svc.1t">Преглед и совет</p>
+          <p class="one__len"><span data-i18n="svc.len">30 минути</span></p>
+          <p class="one__d" data-i18n="svc.1d">Ве прегледуваме и ви кажуваме јасно што треба да се направи.</p>
+        </div>
+        <button class="btn btn--book btn--xl one__btn" data-book="pregled">
+          <span data-i18n="cta.book">Закажете термин</span>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -193,18 +165,20 @@
 
       <div class="cases">
         <figure class="case" data-photo>
-          <img src="assets/img/case-1.jpg" width="860" height="1000" loading="lazy" decoding="async"
+          <img src="assets/img/case-1.jpg" width="720" height="720" loading="lazy" decoding="async"
                alt="Пред и потоа: изабени горни заби со стари пломби, потоа обновена бела насмевка."
-               data-alt-en="Before and after: worn upper teeth with old fillings, then a restored white smile.">
+               data-alt-en="Before and after: worn upper teeth with old fillings, then a restored white smile."
+               data-alt-el="Πριν και μετά: φθαρμένα επάνω δόντια με παλιά σφραγίσματα, έπειτα αποκατεστημένο λευκό χαμόγελο.">
           <figcaption>
             <span class="case__tag" data-i18n="case.1">Обнова на предните заби</span>
           </figcaption>
         </figure>
 
         <figure class="case" data-photo>
-          <img src="assets/img/case-2.jpg" width="860" height="930" loading="lazy" decoding="async"
+          <img src="assets/img/case-2.jpg" width="720" height="720" loading="lazy" decoding="async"
                alt="Пред и потоа: заби со забен камен и пребоеност, потоа исчистена и обновена насмевка."
-               data-alt-en="Before and after: teeth with tartar and staining, then a cleaned and restored smile.">
+               data-alt-en="Before and after: teeth with tartar and staining, then a cleaned and restored smile."
+               data-alt-el="Πριν και μετά: δόντια με πέτρα και χρωματισμούς, έπειτα καθαρισμένο και αποκατεστημένο χαμόγελο.">
           <figcaption>
             <span class="case__tag" data-i18n="case.2">Чистење и обнова на горна и долна вилица</span>
           </figcaption>
@@ -276,8 +250,7 @@
     <div class="wrap strip__in">
       <h2 class="strip__h" data-i18n="st.h">Закажете термин сега</h2>
       <p class="strip__p" data-i18n="st.p">
-        Три прашања: зошто доаѓате, кој ден ви одговара и како да ве добиеме.
-        Ништо повеќе.
+        Две прашања: кој ден ви одговара и како да ве добиеме. Ништо повеќе.
       </p>
       <div class="strip__cta">
         <button class="btn btn--light btn--xl" data-open-book>
@@ -339,6 +312,7 @@
 
 <footer class="foot">
   <div class="wrap foot__in">
+    <img class="foot__logo" src="assets/img/logo.jpg" width="560" height="500" loading="lazy" decoding="async" alt="ELKAS Dent">
     <p class="foot__b">Елкас Дент <span>· Elkas Dent MKD</span></p>
     <p class="foot__m" data-i18n="ft.addr">ул. Св. Климент Охридски 33, Пелагонка 2, 7000 Битола · 078 438 106</p>
     <p class="foot__s" data-i18n="ft.note">Информациите на страницата се за општо запознавање и не заменуваат стоматолошки преглед.</p>
@@ -361,32 +335,27 @@
 <dialog class="bk" data-bk aria-labelledby="bk-title">
   <div class="bk__head">
     <div class="bk__headRow">
-      <p class="bk__step" data-bk-stepline>Чекор 1 од 3</p>
+      <p class="bk__step" data-bk-stepline>Чекор 1 од 2</p>
       <button type="button" class="bk__x" data-bk-close aria-label="Затвори" data-aria="bk.close">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
     </div>
-    <h2 class="bk__title" id="bk-title" data-bk-title>Зошто доаѓате?</h2>
+    <h2 class="bk__title" id="bk-title" data-bk-title>Кога ви одговара?</h2>
     <div class="bk__bar" aria-hidden="true"><span data-bk-bar></span></div>
   </div>
 
   <div class="bk__body" data-bk-body>
     <p class="sr" aria-live="polite" data-bk-live></p>
 
-    <!-- step 1 -->
+    <!-- step 1 — when -->
     <section data-pane="1">
-      <ul class="pick" data-bk-reasons></ul>
-    </section>
-
-    <!-- step 2 -->
-    <section data-pane="2" hidden>
       <p class="bk__sub" data-i18n="bk.pickDay">Изберете ден:</p>
       <ul class="days" data-bk-days></ul>
       <div class="times" data-bk-times></div>
     </section>
 
-    <!-- step 3 -->
-    <form data-pane="3" hidden novalidate>
+    <!-- step 2 — who -->
+    <form data-pane="2" hidden novalidate>
       <div class="fld">
         <label for="f-name" data-i18n="bk.name">Име и презиме</label>
         <input id="f-name" name="fullname" type="text" autocomplete="name" required>
@@ -472,7 +441,7 @@
   "@type": "Dentist",
   "name": "Елкас Дент",
   "alternateName": "Elkas Dent",
-  "image": "assets/img/clinic-1.jpg",
+  "image": "assets/img/logo.jpg",
   "telephone": "+389 78 438 106",
   "address": {
     "@type": "PostalAddress",
